@@ -2,18 +2,10 @@ require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
 const path = require('path');
 
-/**
- * Database setup
- */
-
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-});
-
 require('express-async-errors');
+require('./database');
 
 const routes = require('./routes');
 const cors = require('./middlewares/cors');
