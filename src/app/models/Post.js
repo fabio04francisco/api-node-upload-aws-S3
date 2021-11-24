@@ -30,9 +30,8 @@ PostSchema.pre('remove', function preRemove() {
       Key: this.key,
     }).promise();
   }
-
   return promisify(fs.unlink)(
-    path.resolve(__dirname, '..', '..', 'tmp', 'uploads', this.key),
+    path.resolve(__dirname, '..', '..', '..', 'tmcp', 'uploads', this.key),
   );
 });
 
