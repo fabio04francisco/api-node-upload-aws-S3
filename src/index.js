@@ -3,13 +3,13 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-
 require('express-async-errors');
-require('./database');
 
 const routes = require('./routes');
 const cors = require('./middlewares/cors');
 const errorHandler = require('./middlewares/errorHandler');
+
+require('./database');
 
 const app = express();
 
@@ -19,9 +19,10 @@ app.use(morgan('dev'));
 app.use(cors);
 
 app.use(
-  'files',
+  '/files',
   express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')),
 );
+
 app.use(routes);
 app.use(errorHandler);
 
